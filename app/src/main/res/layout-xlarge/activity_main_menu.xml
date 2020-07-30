@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainmenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+    tools:context="com.example.aloom.neonshuffleboardv2.MainMenuActivity">
+
+    <VideoView
+        android:id="@+id/gifVideo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:layout_width="800dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gifVideo"
+        app:layout_constraintVertical_bias="0.794"
+        app:layout_constraintRight_toLeftOf="@+id/gifVideo"
+        app:layout_constraintLeft_toRightOf="@+id/gifVideo">
+
+        <Button
+            android:id="@+id/playGame"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1.75"
+            android:background="@android:color/transparent"
+            android:hapticFeedbackEnabled="true"
+            android:longClickable="false"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:typeface="serif" />
+
+        <Button
+            android:id="@+id/gameSettings"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="0.52"
+            android:background="@android:color/transparent"
+            android:hapticFeedbackEnabled="true"
+            android:longClickable="false"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:typeface="serif"
+            tools:layout_editor_absoluteX="408dp"
+            tools:layout_editor_absoluteY="474dp" />
+
+    </LinearLayout>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="horizontal" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="vertical" />
+
+</android.support.constraint.ConstraintLayout>

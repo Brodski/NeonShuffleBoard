@@ -27,7 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NSBGameActivity"></activity>
+        <activity android:name=".NSBGameActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

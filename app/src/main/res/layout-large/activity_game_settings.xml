@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    tools:context="com.example.aloom.neonshuffleboardv2.GameSettingsActivity">
+
+    <TextView
+        android:id="@+id/colorThemesText"
+        android:layout_width="89dp"
+        android:layout_height="26dp"
+        android:layout_alignBottom="@+id/colorThemes"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="Adjust speed of the weights"
+        android:text="Color Themes"
+        android:textColor="@color/neonRed" />
+
+    <SeekBar
+        android:id="@+id/weightSpeed"
+        android:layout_width="283dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="21dp"
+        android:background="@android:color/background_light"
+        android:backgroundTint="@color/neonBright"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/weightSpeedText" />
+
+    <TextView
+        android:id="@+id/weightSpeedText"
+        android:layout_width="89dp"
+        android:layout_height="26dp"
+        android:layout_alignBottom="@+id/weightSpeed"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="Adjust speed of the weights"
+        android:text="Weight Speed"
+        android:textColor="@color/neonRed" />
+
+    <Spinner
+        android:id="@+id/colorThemes"
+        android:layout_width="283dp"
+        android:layout_height="28dp"
+        android:layout_below="@+id/weightSpeed"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/weightSpeedText"
+        android:background="@android:color/background_light"
+        android:backgroundTint="@color/neonBright" />
+
+</RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.aloom.neonshuffleboardv2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class GameSettingsActivity extends AppCompatActivity {
+public class  GameSettingsActivity extends AppCompatActivity {
 
     SeekBar weightSpeed;
     double speed = 0;
@@ -31,6 +32,10 @@ public class GameSettingsActivity extends AppCompatActivity {
     String[]neonColors = {"lightNeonBlue","neonRed","neonGreen","neonYellow","lightNeonGreen","neonOrange","neonBlue","neonPink","neonBright","paleNeonGreen"
             ,"darkNeonOrange","darkNeonRed","neonTeal","neonOlive","paleNeonPink","paleNeonPink2"};
     HashMap<String,String>colorHexValues = new HashMap<>();
+    String userWeightSetting ="userWeightSetting";
+
+
+
 
     //Initialize settings menu components
     @Override
@@ -45,6 +50,20 @@ public class GameSettingsActivity extends AppCompatActivity {
         createColorHashMap();
         setColorPreview();
         onWeightSpeedChanged();
+        getSavedSettings();
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences settings = getSharedPreferences("settings",  MODE_PRIVATE );
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("userWeightSetting", (int) speed);
+        editor.putInt("userColorSetting", colorThemes.getSelectedItemPosition());
+        editor.commit();
+
     }
 
     private void setColorPreview() {
@@ -54,10 +73,8 @@ public class GameSettingsActivity extends AppCompatActivity {
                 colorThemesText.setTextColor(hexToRGB(colorThemes.getSelectedItem().toString()));
                 weightSpeedTxt.setTextColor(hexToRGB(colorThemes.getSelectedItem().toString()));
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -96,6 +113,16 @@ public class GameSettingsActivity extends AppCompatActivity {
         return convertedColor;
     }
 
+
+    private void getSavedSettings() {
+        SharedPreferences settings = getSharedPreferences("settings", MODE_PRIVATE );
+        int savedWeightValue = settings.getInt("userWeightSetting", 0);
+        int colorSelection = settings.getInt("userColorSetting", 0);
+        colorThemes.setSelection(colorSelection);
+        weightSpeed.setProgress(savedWeightValue);
+    }
+
+
     public double getWeightSpeed(){
         return this.speed;
     }
@@ -110,21 +137,15 @@ public class GameSettingsActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 speed = weightSpeed.getProgress();
                 weightSpeedTxt.setText(String.valueOf(speed));
-
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
                 //research
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
-
                 //research
-
             }
         });
     }
